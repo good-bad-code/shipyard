@@ -1,0 +1,28 @@
+{
+  "name": "@shipyard/database",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "drizzle"],
+  "dependencies": {
+    "@shipyard/config": "workspace:*",
+    "drizzle-orm": "^0.36.4",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.27.1"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test",
+    "test:integration": "SHIPYARD_RUN_DB_INTEGRATION=1 node --import tsx --test test/integration/*.integration.test.ts",
+    "migrate": "tsx src/migrate.ts",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:check": "drizzle-kit check"
+  }
+}
